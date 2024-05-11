@@ -13,42 +13,71 @@ export default function BlockChainView() {
 				{chain?.map((block: any, index: any) => (
 					<Card
 						key={index}
-						className='p-6 max-w-xl  text-wrap break-words'>
+						className='p-6 max-w-xl h-fit  text-wrap break-words'>
 						<CardTitle>Bloque {index}</CardTitle>
-						<CardContent className='p-4 flex-col gap-4 h-fit'>
-							<p>Timestamp: {block.Timestamp}</p>
-							<p>Previous Hash: {block.PreviousHash}</p>
-							<p>Nonce: {block.Nonce}</p>
-							<p>Hash:{block.Hash}</p>
-                            <p
-                                className='text-lg font-bold'
-                            >Transactions:</p>
-							<ScrollArea className='h-96 p-4'>
-								{block.Transactions.map(
-									(transaction: any, index: any) => (
-										<Card key={index}>
-											<CardContent className='p-4'>
-												
-													<div >
-														<p className='break-words'>
-															Sender:{' '}
-															{transaction.From}
-														</p>
-														<p className='break-words'>
-															Receiver:{' '}
-															{transaction.To}
-														</p>
-														<p className='break-words'>
-															Amount:{' '}
-															{transaction.Amount}
-														</p>
-													</div>
-												
-											</CardContent>
-										</Card>
-									)
-								)}
-							</ScrollArea>
+						<CardContent className='p-4  gap-4 h-fit'>
+							<p>
+								{' '}
+								<span className='text-[#dbec9c]'>
+									Timestamp:
+								</span>{' '}
+								{block.Timestamp}
+							</p>
+							<p>
+								<span className='text-[#dbec9c]'>
+									Previous Hash:
+								</span>{' '}
+								{block.PreviousHash}
+							</p>
+							<p>
+								<span className='text-[#dbec9c]'>Nonce:</span>{' '}
+								{block.Nonce}
+							</p>
+							<p>
+								<span
+									className='
+								text-[#dbec9c]
+								'>
+									Hash:
+								</span>
+								{block.Hash}
+							</p>
+							<p className='text-lg font-bold text-[#dbec9c]'>
+								Transactions:
+							</p>
+							<div>
+								<ScrollArea className='max-h-50 p-4'>
+									<div className='flex h-full'>
+										{block.Transactions.map(
+											(transaction: any, index: any) => (
+												<Card key={index}>
+													<CardContent className='p-4 w-full'>
+														<div>
+															<p className='break-words text-[#dbec9c]'>
+																Sender:{' '}
+																{
+																	transaction.From
+																}
+															</p>
+															<p className='break-words text-[#dbec9c]'>
+																Receiver:{' '}
+																{transaction.To}
+															</p>
+															<p className='break-words text-[#dbec9c]'>
+																Amount:{' '}
+																{
+																	transaction.Amount
+																}
+															</p>
+														</div>
+													</CardContent>
+												</Card>
+											)
+										)}
+									</div>
+									<ScrollBar orientation='horizontal' />
+								</ScrollArea>
+							</div>
 						</CardContent>
 					</Card>
 				))}
@@ -57,3 +86,7 @@ export default function BlockChainView() {
 		</ScrollArea>
 	);
 }
+/* 
+
+{
+*/

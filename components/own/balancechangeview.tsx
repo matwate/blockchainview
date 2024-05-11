@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import BalanceChangeForm from "./balancechangeform"
+import { Bitcoin } from "lucide-react"
 export default function BalanceChangeView(){
 
    
@@ -16,7 +17,9 @@ export default function BalanceChangeView(){
         <>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button>Cambiar Balance</Button>
+                    <Button variant={"ghost"}>
+                        <Bitcoin size={16} strokeWidth={1.75} className="mx-2"/>
+                        Cambiar Balance</Button>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>

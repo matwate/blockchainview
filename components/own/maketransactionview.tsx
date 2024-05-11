@@ -9,13 +9,20 @@ import {
 	DialogTrigger,
 } from '@/components/ui/dialog';
 import MakeTransactionForm from './maketransactionform';
+import { ArrowLeft, ArrowLeftRight } from 'lucide-react';
 
 export default function MakeTransactionView() {
 	return (
 		<>
 			<Dialog>
 				<DialogTrigger asChild>
-					<Button>Crear Transaccion</Button>
+					<Button variant={"ghost"}>
+						<ArrowLeftRight
+							size={16}
+							strokeWidth={1.75}
+							className='mx-2'
+						/>
+						Crear Transaccion</Button>
 				</DialogTrigger>
 				<DialogContent>
 					<DialogHeader>

@@ -7,22 +7,26 @@ import UsersView from '@/components/own/usersview';
 import BalanceChangeView from '@/components/own/balancechangeview';
 import MakeTransactionView from '@/components/own/maketransactionview';
 import BlockChainView from '@/components/own/blockchainview';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ArrowRightLeft, Link, Pickaxe, UserPlus, Users } from 'lucide-react';
+
 const page = () => {
 	const { toast } = useToast();
 
 	const exception = useStore((state: any) => state.exception);
 	useEffect(() => {
-		
-		if (exception !== null || exception !== "" || exception !== undefined) {
+		if (exception == ""){
+			return;
+		}
+
+
+		if (exception !== null || exception !== '' || exception !== undefined) {
 			toast({
 				title: 'Error',
 				description: exception,
-				
 			});
 		}
 	}, [exception]);
-
-
 
 	const blockchain = useStore((state: any) => state.blockchain);
 	const fetchBlockchain = useStore((state: any) => state.fetchBlockchain);
@@ -72,16 +76,41 @@ const page = () => {
 
 	return (
 		<>
-			<div className='flex'>
-				<Button onClick={handleViewBlockchain}>Ver BlockChain</Button>
-				<Button onClick={handleUserCreation}>Crear Usuario</Button>
-				<UsersView />
-				<BalanceChangeView />
-				<Button onClick={handleViewPendingTrxs}>
-					Ver Transacciones Pendientes
-				</Button>
-				<Button onClick={handleMiningBlock}>Minar Bloque</Button>
-				<MakeTransactionView />
+			<div>
+				<Sheet>
+					<SheetTrigger asChild>
+						<Button>Controles</Button>
+					</SheetTrigger>
+					<SheetContent
+						className='w-60'
+						side={'left'}>
+						<div className='flex-col justify-evenly'>
+							<Button onClick={handleViewBlockchain} variant={"ghost"} >
+								<Link size={16} strokeWidth={1.75} className='mx-2' />
+								Ver BlockChain
+							</Button>
+							<Button onClick={handleUserCreation} variant={"ghost"}>
+							<UserPlus size={16} strokeWidth={1.75} className='mx-2' />
+								Crear Usuario
+							</Button>
+							<UsersView />
+							<BalanceChangeView />
+							<Button onClick={handleViewPendingTrxs} variant={"ghost"}>
+								<ArrowRightLeft
+									size={16}
+									strokeWidth={1.75}
+									className='mx-2'
+								/>
+								Ver Transacciones 
+							</Button>
+							<Button onClick={handleMiningBlock} variant={"ghost"}>
+								<Pickaxe size={16} strokeWidth={1.75} className='mx-2' />
+								Minar Bloque
+							</Button>
+							<MakeTransactionView />
+						</div>
+					</SheetContent>
+				</Sheet>
 			</div>
 			<div className='m-8'>
 				<BlockChainView />
