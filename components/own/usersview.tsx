@@ -24,8 +24,8 @@ export default function UsersView() {
 					</Button>
 				</SheetTrigger>
 				<SheetContent>
-					<ScrollArea h-max>
-						<div className='p-4'>
+					<ScrollArea className='h-max'>
+						<div className='p-4 h-[500px]'>
 							{content.map((user: any, idx: number) => {
 								return (
 									<div key={user.public_key}>
